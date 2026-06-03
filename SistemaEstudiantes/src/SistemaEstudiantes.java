@@ -1,37 +1,51 @@
+import java.util.Scanner;
 
 public class SistemaEstudiantes {
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
 
+        Scanner teclado = new Scanner(System.in);
 
         System.out.println("Bienvenido al sistema estudiantil");
 
-        Estudiante estudiante1 = new Estudiante("Daniel Parada", 3);
-        Estudiante estudiante2 = new Estudiante("Juliana", 3);
+        // Ingreso cantidad de estudiantes por teclado
+        System.out.println("Ingrese la cantidad de estudiantes ");
+        int qtyEstudiantes = teclado.nextInt();
+        teclado.nextLine();// Eliminar salto de linea
 
-        GestorEstudiantes estudiante = new GestorEstudiantes(2);
+        GestorEstudiantes gesEstudiante = new GestorEstudiantes(qtyEstudiantes);
 
-        estudiante1.ingresoAsignatura(0, "Matemmaticas");
-        estudiante1.ingresoAsignatura(1, "Español");
-        estudiante1.ingresoAsignatura(2, "Programacion");
+        // Ingreso cantidad de materias por teclado
+        System.out.println("Ingrese la cantidad de materias");
+        int qtyMaterias = teclado.nextInt();
+        teclado.nextLine();
 
-        estudiante2.ingresoAsignatura(0, "Matemmaticas");
-        estudiante2.ingresoAsignatura(1, "Español");
-        estudiante2.ingresoAsignatura(2, "Programacion");
+        for (int i = 0; i < qtyEstudiantes; i++) {
 
-        estudiante1.ingresoNota(0, 5);
-        estudiante1.ingresoNota(1, 3.5);
-        estudiante1.ingresoNota("Programacion", 5);
+            System.out.println("Ingrese el estudiante " + (i + 1));
+            String estudianteIngresado = teclado.nextLine();
 
-        estudiante2.ingresoNota(0, 4.5);
-        estudiante2.ingresoNota(1, 3.0);
-        estudiante2.ingresoNota("Programacion", 5); 
+            Estudiante estudiante = new Estudiante(estudianteIngresado, qtyMaterias);
 
-        estudiante.agregarEstudiante(0, estudiante1);
-        estudiante.agregarEstudiante(1, estudiante2);
+            for (int x = 0; x < qtyMaterias; x++) {
 
-        estudiante.mostrarEstudiante();
+                System.out.println("Ingrese la materia: ");
+                String materia = teclado.nextLine();
 
+                System.out.print("Ingrese la nota: ");
+                double nota = teclado.nextDouble();
+                teclado.nextLine();
+
+                estudiante.ingresoAsignatura(x, materia);
+                estudiante.ingresoNota(x, nota);
+
+            }
+
+        gesEstudiante.agregarEstudiante(i, estudiante);
+    
+        }
+
+        gesEstudiante.mostrarEstudiante();
 
     }
 
