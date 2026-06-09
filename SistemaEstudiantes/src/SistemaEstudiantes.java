@@ -36,8 +36,13 @@ public class SistemaEstudiantes {
                 double nota = teclado.nextDouble();
                 teclado.nextLine();
 
+                System.out.println("Ingrese el porcentaje de la materia");
+                double porcentaje = teclado.nextDouble();
+                teclado.nextLine(); 
+
                 estudiante.ingresoAsignatura(x, materia);
                 estudiante.ingresoNota(x, nota);
+                estudiante.ingresoPorcentaje(x, porcentaje);
 
             }
 

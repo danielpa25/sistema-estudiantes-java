@@ -4,6 +4,7 @@ public class Estudiante {
     private String nombre;
     private String[] asignaturas;
     private double[] notas;
+    private double[] porcentajes;
 
 
     //Constructor Estudiante
@@ -12,6 +13,7 @@ public class Estudiante {
         this.nombre = nombre;
         this.asignaturas = new String[numAsignaturas];
         this.notas = new double [numAsignaturas];
+        this.porcentajes =  new double [numAsignaturas];
     }
 
     // Ingresar Asignatura
@@ -39,16 +41,27 @@ public class Estudiante {
         }
     }
 
+    //ingreso porcentaje nota
+    public void ingresoPorcentaje(int i, double porcentaje){
+
+        porcentajes[i] = porcentaje;
+    }
+
     //Calculo de promedio
     public double calculoPromedio(){
 
         double calculo = 0.0;
 
-        for (double nota : notas){
-            calculo += nota;
+        for (int i = 0 ; i < notas.length; i++){
+
+            calculo += (notas[i] * porcentajes[i]);
+            System.out.println("calculo: " + calculo);
+           //calculo += calculo;
+            System.out.println("calculo 2: " + calculo);
+        
         }
 
-        calculo = calculo/notas.length;
+        //calculo = calculo/notas.length;
 
         return calculo;
     }
