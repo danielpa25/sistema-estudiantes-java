@@ -20,36 +20,45 @@ public class SistemaEstudiantes {
         int qtyMaterias = teclado.nextInt();
         teclado.nextLine();
 
+        // Ingreso cantidad de notas por teclado
+        System.out.println("Ingrese la cantidad de notas");
+        int qtyNotas = teclado.nextInt();
+        teclado.nextLine();
+
         for (int i = 0; i < qtyEstudiantes; i++) {
 
             System.out.println("Ingrese el estudiante " + (i + 1));
             String estudianteIngresado = teclado.nextLine();
 
-            Estudiante estudiante = new Estudiante(estudianteIngresado, qtyMaterias);
+            Estudiante estudiante = new Estudiante(estudianteIngresado, qtyMaterias, qtyNotas);
 
             for (int x = 0; x < qtyMaterias; x++) {
 
                 System.out.println("Ingrese la materia: ");
                 String materia = teclado.nextLine();
 
-                System.out.print("Ingrese la nota: ");
-                double nota = teclado.nextDouble();
-                teclado.nextLine();
-
-                System.out.println("Ingrese el porcentaje de la materia");
-                double porcentaje = teclado.nextDouble();
-                teclado.nextLine(); 
-
                 estudiante.ingresoAsignatura(x, materia);
-                estudiante.ingresoNota(x, nota);
-                estudiante.ingresoPorcentaje(x, porcentaje);
 
+                for (int j = 0; j < qtyNotas; j++) {
+                    
+                    System.out.println("Ingrese la nota " + (j + 1));
+                    double nota = teclado.nextDouble();
+                    teclado.nextLine();
+
+                    System.out.println("Ingrese el porcentaje");
+                    double porcentaje = teclado.nextDouble();
+                    teclado.nextLine();
+
+                    estudiante.ingresoNota(x, j, nota);
+                    estudiante.ingresoPorcentaje(x, j, porcentaje);
+
+                }
+               
             }
 
-        gesEstudiante.agregarEstudiante(i, estudiante);
-    
-        }
+            gesEstudiante.agregarEstudiante(i, estudiante);
 
+        }
         gesEstudiante.mostrarEstudiante();
 
     }
