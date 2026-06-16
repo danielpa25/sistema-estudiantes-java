@@ -17,7 +17,6 @@ public class Estudiante {
 
     // Ingresar Asignatura
     public void ingresoAsignatura(int i, String asignatura) {
-
         asignaturas[i] = asignatura;
 
     }
@@ -48,13 +47,13 @@ public class Estudiante {
         porcentajes[i][j] = porcentaje;
     }
 
-    // Calculo de promedio
+    // Calculo de definitava por materia
     public double calculoDefinitivaMateria(int i) {
 
         double calculo = 0.0;
         double divi = 0.0;
 
-        for (int j = 0; j < porcentajes[i].length; j++) {
+        for (int j = 0; j < porcentajes[i].length; j++) {  //c
 
             calculo += notas[i][j] * porcentajes[i][j];
             divi += porcentajes[i][j];
@@ -64,6 +63,7 @@ public class Estudiante {
         return calculo;
     }
 
+    //Claculo promedio de todas las materias
     public double calculoPromedio() {
 
         double definitiva = 0.0;

@@ -40,20 +40,33 @@ public class SistemaEstudiantes {
                 estudiante.ingresoAsignatura(x, materia);
 
                 for (int j = 0; j < qtyNotas; j++) {
-                    
+
                     System.out.println("Ingrese la nota " + (j + 1));
                     double nota = teclado.nextDouble();
                     teclado.nextLine();
+
+                    while (nota > 5) {
+                        System.out.println("Nota incorrecta, ingrese nuevamente la nota: ");
+                        nota = teclado.nextDouble();
+                        teclado.nextLine();
+                    }
 
                     System.out.println("Ingrese el porcentaje");
                     double porcentaje = teclado.nextDouble();
                     teclado.nextLine();
 
+                    while (porcentaje > 1) {
+
+                        System.out.println("porcentaje incorrecto, ingrese nuevamente el porcentaje de la nota: ");
+                        porcentaje = teclado.nextDouble();
+                        teclado.nextLine();
+                    }
+
                     estudiante.ingresoNota(x, j, nota);
                     estudiante.ingresoPorcentaje(x, j, porcentaje);
 
                 }
-               
+
             }
 
             gesEstudiante.agregarEstudiante(i, estudiante);
