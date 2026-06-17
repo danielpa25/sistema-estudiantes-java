@@ -45,7 +45,9 @@ public class SistemaEstudiantes {
                     double nota = teclado.nextDouble();
                     teclado.nextLine();
 
-                    while (nota > 5) {
+
+                    //Condicion nota menor a 5 y mayor a 0
+                    while (nota < 0 || nota > 5){
                         System.out.println("Nota incorrecta, ingrese nuevamente la nota: ");
                         nota = teclado.nextDouble();
                         teclado.nextLine();
@@ -55,7 +57,8 @@ public class SistemaEstudiantes {
                     double porcentaje = teclado.nextDouble();
                     teclado.nextLine();
 
-                    while (porcentaje > 1) {
+                    //Condicion porcentaje menor a 1 y mayor a 0
+                    while (porcentaje < 0 || porcentaje > 1) {
 
                         System.out.println("porcentaje incorrecto, ingrese nuevamente el porcentaje de la nota: ");
                         porcentaje = teclado.nextDouble();
