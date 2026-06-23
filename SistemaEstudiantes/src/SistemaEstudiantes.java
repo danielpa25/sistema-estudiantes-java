@@ -13,7 +13,7 @@ public class SistemaEstudiantes {
         int qtyEstudiantes = teclado.nextInt();
         teclado.nextLine();// Eliminar salto de linea
 
-        GestorEstudiantes gesEstudiante = new GestorEstudiantes(qtyEstudiantes);
+        Curso curso = new Curso(qtyEstudiantes);
 
         // Ingreso cantidad de materias por teclado
         System.out.println("Ingrese la cantidad de materias");
@@ -72,10 +72,10 @@ public class SistemaEstudiantes {
 
             }
 
-            gesEstudiante.agregarEstudiante(i, estudiante);
+            curso.agregarEstudiante(i, estudiante);
 
         }
-        gesEstudiante.mostrarEstudiante();
+        curso.mostrarEstudiante();
 
     }
 
