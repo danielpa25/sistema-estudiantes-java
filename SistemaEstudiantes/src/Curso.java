@@ -6,9 +6,7 @@ public class Curso {
     private Estudiante[] estudiantes; 
  
 
-
-
-    public Curso(int numEstudiantes){
+    public Curso(int numEstudiantes, int grado, char grupo){
 
         this.grado = grado;
         this.grupo = grupo;
@@ -26,9 +24,12 @@ public class Curso {
     // Mostrar estudiantre
     public void mostrarEstudiante( ){
 
+        System.out.println("Curso: " + grado + grupo); 
+
         for (int i = 0; i < estudiantes.length; i++){
             estudiantes[i].mostrarPromedio();
         }
 
     }
+
 }

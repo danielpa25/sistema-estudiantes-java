@@ -1,29 +1,24 @@
 
-public class GestorEstudiantes{
+public class GestorCurso {
 
-    private Estudiante[] estudiantes;
+    private Curso[] cursos;
 
-    //Constructor GestorEstudiante 
-    public GestorEstudiantes( int numeroEstudiantes){
+    public GestorCurso(int numCursos){
 
-        this.estudiantes = new Estudiante[numeroEstudiantes];
-    
-    }
-
-    //Ingreso Estudiantes
-    public void agregarEstudiante(int i,  Estudiante estudiante ){
-
-        estudiantes[i] = estudiante;
+        this.cursos = new Curso[numCursos];
 
     }
 
-    // Mostrar estudiantre
-    public void mostrarEstudiante( ){
+    public void agregarCurso(int i, Curso curso) {
 
-        for (int i = 0; i < estudiantes.length; i++){
-            estudiantes[i].mostrarPromedio();
+        cursos[i] = curso;
+    }
+
+    public void mostrarCurso(){
+
+         for (int i = 0; i < cursos.length; i++){
+            cursos[i].mostrarEstudiante();
         }
-
     }
 
 }

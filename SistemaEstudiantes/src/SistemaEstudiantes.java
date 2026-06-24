@@ -13,7 +13,11 @@ public class SistemaEstudiantes {
         int qtyEstudiantes = teclado.nextInt();
         teclado.nextLine();// Eliminar salto de linea
 
-        Curso curso = new Curso(qtyEstudiantes);
+        System.out.println("Ingrese la cantidad de cursos: ");
+        int qtyCursos = teclado.nextInt();
+        teclado.nextLine();// Eliminar salto de linea
+
+        GestorCurso gescurso = new GestorCurso(qtyCursos);
 
         // Ingreso cantidad de materias por teclado
         System.out.println("Ingrese la cantidad de materias");
@@ -25,57 +29,73 @@ public class SistemaEstudiantes {
         int qtyNotas = teclado.nextInt();
         teclado.nextLine();
 
-        for (int i = 0; i < qtyEstudiantes; i++) {
+        for (int y = 0; y < qtyCursos; y++) {
 
-            System.out.println("Ingrese el estudiante " + (i + 1));
-            String estudianteIngresado = teclado.nextLine();
+            // Ingreso grado
+            System.out.println("Ingrese el grado: ");
+            int grado = teclado.nextInt();
+            teclado.nextLine();// Eliminar salto de linea
 
-            Estudiante estudiante = new Estudiante(estudianteIngresado, qtyMaterias, qtyNotas);
+            System.out.println("Ingrese el grupo: ");
+            String grupoTexto = teclado.nextLine(); // JAVA no permite leer un solo caracter, por lo que solo permite leer un string
+            char grupo = grupoTexto.charAt(0); // Conversion de String a Chart tomando el primer valor del String
 
-            for (int x = 0; x < qtyMaterias; x++) {
+            Curso curso = new Curso(qtyEstudiantes, grado, grupo);
+            gescurso.agregarCurso(y, curso);
 
-                System.out.println("Ingrese la materia: ");
-                String materia = teclado.nextLine();
+            for (int i = 0; i < qtyEstudiantes; i++) {
 
-                estudiante.ingresoAsignatura(x, materia);
+                System.out.println("Ingrese el estudiante " + (i + 1));
+                String estudianteIngresado = teclado.nextLine();
 
-                for (int j = 0; j < qtyNotas; j++) {
+                Estudiante estudiante = new Estudiante(estudianteIngresado, qtyMaterias, qtyNotas);
 
-                    System.out.println("Ingrese la nota " + (j + 1));
-                    double nota = teclado.nextDouble();
-                    teclado.nextLine();
+                for (int x = 0; x < qtyMaterias; x++) {
 
+                    System.out.println("Ingrese la materia: ");
+                    String materia = teclado.nextLine();
 
-                    //Condicion nota menor a 5 y mayor a 0
-                    while (nota < 0 || nota > 5){
-                        System.out.println("Nota incorrecta, ingrese nuevamente la nota: ");
-                        nota = teclado.nextDouble();
+                    estudiante.ingresoAsignatura(x, materia);
+
+                    for (int j = 0; j < qtyNotas; j++) {
+
+                        System.out.println("Ingrese la nota " + (j + 1));
+                        double nota = teclado.nextDouble();
                         teclado.nextLine();
-                    }
 
-                    System.out.println("Ingrese el porcentaje");
-                    double porcentaje = teclado.nextDouble();
-                    teclado.nextLine();
+                        // Condicion nota menor a 5 y mayor a 0
+                        while (nota < 0 || nota > 5) {
+                            System.out.println("Nota incorrecta, ingrese nuevamente la nota: ");
+                            nota = teclado.nextDouble();
+                            teclado.nextLine();
+                        }
 
-                    //Condicion porcentaje menor a 1 y mayor a 0
-                    while (porcentaje < 0 || porcentaje > 1) {
-
-                        System.out.println("porcentaje incorrecto, ingrese nuevamente el porcentaje de la nota: ");
-                        porcentaje = teclado.nextDouble();
+                        System.out.println("Ingrese el porcentaje");
+                        double porcentaje = teclado.nextDouble();
                         teclado.nextLine();
-                    }
 
-                    estudiante.ingresoNota(x, j, nota);
-                    estudiante.ingresoPorcentaje(x, j, porcentaje);
+                        // Condicion porcentaje menor a 1 y mayor a 0
+                        while (porcentaje < 0 || porcentaje > 1) {
+
+                            System.out.println("porcentaje incorrecto, ingrese nuevamente el porcentaje de la nota: ");
+                            porcentaje = teclado.nextDouble();
+                            teclado.nextLine();
+                        }
+
+                        estudiante.ingresoNota(x, j, nota);
+                        estudiante.ingresoPorcentaje(x, j, porcentaje);
+
+                    }
 
                 }
 
+                curso.agregarEstudiante(i, estudiante);
+
             }
-
-            curso.agregarEstudiante(i, estudiante);
-
+            
         }
-        curso.mostrarEstudiante();
+
+       gescurso.mostrarCurso();
 
     }
 
