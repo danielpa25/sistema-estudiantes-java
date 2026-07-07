@@ -101,4 +101,21 @@ public class Estudiante {
 
     }
 
+    public String getNombre(){
+        return nombre;
+    }
+
+    public String[] getAsignaturas(){
+        return asignaturas;
+    }
+
+    public double[][] getNotas(){
+        return notas;
+    } 
+
+    public double[][] getPorcentajes(){
+        return porcentajes;
+    } 
+
+
 }

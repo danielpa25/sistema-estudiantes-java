@@ -96,6 +96,7 @@ public class SistemaEstudiantes {
         }
 
        gescurso.mostrarCurso();
+       gescurso.guardarDatos();
 
     }
 
